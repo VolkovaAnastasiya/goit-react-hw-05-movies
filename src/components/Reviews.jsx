@@ -1,6 +1,7 @@
 import { getReview } from "services/apiService"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
+import { List, Item } from "stiles/Reviews.styled";
 
 
 export default function Reviews(){
@@ -17,9 +18,9 @@ return (
     <>
       {rewiev &&
         (rewiev.results.length !== 0 ? (
-          <ul>
+          <List>
             {rewiev.results.map(actor => (
-              <li key={actor.id}>
+              <Item key={actor.id}>
                 <p>
                   <strong>author:</strong> {actor.author}
                 </p>
@@ -27,9 +28,9 @@ return (
                 <p>
                   <strong>content:</strong> {actor.content}
                 </p>
-              </li>
+              </Item>
             ))}
-          </ul>
+          </List>
         ) : (
           <h2> We don't have any rewievs for this movie</h2>
         ))}

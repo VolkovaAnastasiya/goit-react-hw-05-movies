@@ -1,17 +1,18 @@
 import { Link, useLocation } from 'react-router-dom';
+import { List, Item } from 'stiles/MovieList.styled';
 
 export default function MoviesList({ movies }) {
   const location = useLocation();
-  console.log('location', location)
+ 
   return (
-    <ul>
+    <List>
       {movies.map(movie => (
-        <li key={movie.id}>
+        <Item key={movie.id}>
           <Link to={`/movies/${movie.id}`} state={{ from: location }}>
-            {movie.title}
+            <h2>{movie.title}</h2>
           </Link>
-        </li>
+        </Item>
       ))}
-    </ul>
+    </List>
   );
 }

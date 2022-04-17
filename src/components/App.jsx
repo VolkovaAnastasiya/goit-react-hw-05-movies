@@ -1,17 +1,18 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "view/HomePage";
-import MoviesPage from "view/MoviesPage";
-import Navigation from "./Navigation";
-import MovieDetalisPage from "view/MovieDetalisPage";
-import Cast from "./Cast";
-import Reviews from './Reviews'
+import { lazy, Suspense } from "react";
 
+const HomePage = lazy(()=> import("view/HomePage" /* webpackChunkName: "home-page" */));
+const Navigation  = lazy(() => import("./Navigation" /* webpackChunkName: "navigation" */));
+const MoviesPage = lazy(()=> import("view/MoviesPage" /* webpackChunkName: "movies-page" */));
+const MovieDetalisPage = lazy(()=>import("view/MovieDetalisPage" /* webpackChunkName: "movie-detalis-page" */));
+const Cast = lazy(()=>import('./Cast' /* webpackChunkName: "cast" */));
+const Reviews = lazy(()=>import('./Reviews' /* webpackChunkName: "reviews" */));
 
 
 export const App = () => {
   return (
     <div>
-     
+      <Suspense fallback={<div>Loading...</div>}>
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -21,6 +22,9 @@ export const App = () => {
           <Route path="reviews" element={<Reviews />} />
         </Route>
       </Routes>
+  </Suspense>
+     
+      
      
     </div>
   );

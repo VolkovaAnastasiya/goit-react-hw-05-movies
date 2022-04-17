@@ -4,9 +4,10 @@ import {
   useParams,
   useNavigate,
   Outlet,
-  Link,
+
   // useLocation,
 } from 'react-router-dom';
+import { Box, Wrap, Btn, Link, P } from 'stiles/MovieDetailsPage.styled';
 
 export default function MovieDetalisPage() {
   const params = useParams();
@@ -24,13 +25,13 @@ export default function MovieDetalisPage() {
 
   return (
     <>
-      <button type="button" onClick={onBack}>
+      <Btn type="button" onClick={onBack}>
         Go back
-      </button>
-      <div>
+      </Btn>
+      <Wrap>
         {movie && (
           <>
-            <div>
+            <Box>
               <img
                 src={
                   movie.poster_path
@@ -39,23 +40,23 @@ export default function MovieDetalisPage() {
                 }
                 alt={movie.original_title}
               />
-            </div>
-            <div>
+            </Box>
+            <Box>
               <h2>{movie.original_title}</h2>
-              <p>{`Rating ${movie.vote_average}`}</p>
+              <P>{`Rating ${movie.vote_average}`}</P>
               <h3>Owerview:</h3>
-              <p>{movie.overview}</p>
+              <P>{movie.overview}</P>
 
-              <div>
+              <Box>
                 <strong>Ganres: </strong>
                 {movie.genres.map(({ id, name }) => (
-                  <p key={id}>{name}</p>
+                  <P key={id}>{name}</P>
                 ))}
-              </div>
-            </div>
+              </Box>
+            </Box>
           </>
         )}
-      </div>
+      </Wrap>
       <hr />
       <h2>Additional information</h2>
       <Link to="cast">Cast</Link>

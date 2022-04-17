@@ -1,14 +1,16 @@
+import { Form, Btn, Input, Wrap } from "stiles/SearchForm.styled";
+
 export default function SearchForm({handleSetQuery, handleSubmit, value}){
     return (
-        <div>
-          <form onSubmit={handleSubmit}>
-            <input
+        <Wrap>
+          <Form onSubmit={handleSubmit}>
+            <Input
               placeholder="movie name"
               onChange={handleSetQuery}
               value={value}
             />
-            <button type="submit">Search</button>
-          </form>
-        </div>
+            <Btn type="submit">Search</Btn>
+          </Form>
+        </Wrap>
       );
 }
