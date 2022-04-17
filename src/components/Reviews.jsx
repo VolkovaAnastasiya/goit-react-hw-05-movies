@@ -6,15 +6,14 @@ import { List, Item } from "stiles/Reviews.styled";
 
 export default function Reviews(){
     
-     const params = useParams();
+ const params = useParams();
+ const [rewiev, setRewiev] = useState(null);
 
-const [rewiev, setRewiev] = useState(null);
-
-useEffect(() => {
+ useEffect(() => {
   getReview(params.id).then(rewiev => setRewiev(rewiev));
-}, [params.id]);
+ }, [params.id]);
 
-return (
+ return (
     <>
       {rewiev &&
         (rewiev.results.length !== 0 ? (

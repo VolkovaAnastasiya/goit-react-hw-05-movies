@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import MoviesList from 'components/MoviesList';
 import SearchForm from 'components/SearchForm';
+import PropTypes from 'prop-types';
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -39,3 +40,7 @@ export default function MoviesPage() {
     </div>
   );
 }
+
+MoviesPage.propTypes = {
+  searchParams: PropTypes.object,
+};
